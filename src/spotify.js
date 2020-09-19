@@ -28,7 +28,6 @@ export const getTokenFromUrl = () => {
       // accessToken = mysupersceretkey&name=sachinblahblahblah&
       let parts = item.split("=");
       initial[parts[0]] = decodeURIComponent(parts[1]);
-
       return initial;
     }, {});
 };
