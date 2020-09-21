@@ -8,7 +8,46 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
 function Body({ spotify }) {
-  const [{ discover_weekly }] = useDataLayerValue();
+  const [{ discover_weekly, item, playing }, dispatch] = useDataLayerValue();
+
+  const playPlaylist = () => {
+    spotify
+      .play({
+        context_uri: `spotify:playlist:37i9dQZEVXcTWkcxwvfDty`,
+      })
+      .then(() => {
+        spotify.getMyCurrentPlayingTrack().then((r) => {
+          dispatch({
+            type: "SET_ITEM",
+            iten: r.item,
+          });
+          dispatch({
+            type: "SET_PLAYING",
+            playing: true,
+          });
+        });
+      });
+  };
+
+  const playSong = (id) => {
+    console.log("track id >>> ", id);
+    spotify
+      .play({
+        uris: [`spotify:tracks:${id}`],
+      })
+      .then((res) => {
+        spotify.getMyCurrentPlayingTrack().then((r) => {
+          dispatch({
+            type: "SET_ITEM",
+            item: r.item,
+          });
+          dispatch({
+            type: "SET_PLAYING",
+            playing: true,
+          });
+        });
+      });
+  };
 
   return (
     <div className="body">
@@ -26,14 +65,16 @@ function Body({ spotify }) {
 
       <div className="body__songs">
         <div className="body__icons">
-          <PlayCircleFilledIcon className="body__shuffle" />
+          <PlayCircleFilledIcon
+            onClick={playPlaylist}
+            className="body__shuffle"
+          />
           <FavoriteIcon fontSize="large" />
           <MoreHorizIcon />
         </div>
-        {/* List of songs */}
 
         {discover_weekly?.tracks.items.map((item) => (
-          <SongRow track={item.track} />
+          <SongRow playSong={playSong} track={item.track} />
         ))}
       </div>
     </div>

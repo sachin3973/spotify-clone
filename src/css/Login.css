@@ -16,17 +16,17 @@
 
 .login > a {
   font-size: 20px;
-  padding: 22px 50px 22px 50px;
+  padding: 22px 40px 22px 40px;
   border-radius: 100px;
   background-color: #1db954;
   text-decoration: none;
   outline: none;
   font-weight: 700;
   color: #fff;
-  transition: all 0.5s;
+  transition: 0.2s color ease-in;
 }
 
 .login > a:hover {
-  background-color: #07aa40;
-  transform: scale(1.05);
+  background-color: #e6e6e6;
+  color: #000000;
 }
