@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
+import React, { useEffect } from "react";
+import "./css/App.css";
 import Login from "./Login";
 import { getTokenFromUrl } from "./spotify";
 import SpotifyWebApi from "spotify-web-api-js";
@@ -9,7 +9,7 @@ import { useDataLayerValue } from "./DataLayer";
 const spotify = new SpotifyWebApi();
 
 const App = () => {
-  const [{ user, token }, dispatch] = useDataLayerValue();
+  const [{ token }, dispatch] = useDataLayerValue();
 
   // Runs code based on given condition
   useEffect(() => {
@@ -46,7 +46,7 @@ const App = () => {
         });
       });
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="app">

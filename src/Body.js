@@ -1,5 +1,5 @@
 import React from "react";
-import "./Body.css";
+import "./css/Body.css";
 import { useDataLayerValue } from "./DataLayer";
 import Header from "./Header";
 import SongRow from "./SongRow";
@@ -8,7 +8,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
 function Body({ spotify }) {
-  const [{ discover_weekly }, dispatch] = useDataLayerValue();
+  const [{ discover_weekly }] = useDataLayerValue();
 
   return (
     <div className="body">
