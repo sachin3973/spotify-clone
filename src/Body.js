@@ -8,7 +8,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
 function Body({ spotify }) {
-  const [{ discover_weekly, item, playing }, dispatch] = useDataLayerValue();
+  const [{ discover_weekly }, dispatch] = useDataLayerValue();
 
   const playPlaylist = () => {
     spotify

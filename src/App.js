@@ -63,7 +63,7 @@ const App = () => {
   return (
     <div className="app">
       {!token && <Login />}
-      {token ? <Player spotify={spotify} /> : <Login />}
+      {token && <Player spotify={spotify} />}
     </div>
   );
 };

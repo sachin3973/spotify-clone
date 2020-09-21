@@ -12,7 +12,7 @@ import "./css/Footer.css";
 import { Grid, Slider } from "@material-ui/core";
 
 function Footer({ spotify }) {
-  const [{ token, item, playing }, dispatch] = useDataLayerValue();
+  const [{ item, playing }, dispatch] = useDataLayerValue();
 
   useEffect(() => {
     spotify.getMyCurrentPlaybackState().then((r) => {
@@ -28,7 +28,7 @@ function Footer({ spotify }) {
         item: r.item,
       });
     });
-  }, [spotify]);
+  }, [dispatch, spotify]);
 
   const handlePlayPause = () => {
     if (playing) {
@@ -81,7 +81,7 @@ function Footer({ spotify }) {
         <img
           className="footer__albumLogo"
           src={item?.album.images[0].url}
-          alt={item?.name}
+          alt=""
         />
         {item ? (
           <div className="footer__songInfo">
