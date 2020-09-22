@@ -30,7 +30,7 @@ function Body({ spotify }) {
   };
 
   const playSong = (id) => {
-    console.log("track id >>> ", id);
+    // console.log("track id >>> ", id);
     spotify
       .play({
         uris: [`spotify:tracks:${id}`],
